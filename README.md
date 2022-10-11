@@ -54,8 +54,8 @@
 	- Mark_value (Оценка)
 
 
-**денорм**
-![normilize_db](https://github.com/theayo/SUBD/blob/main/doc/scheme.png)
-**норм**
+**Не нормализованная Схема БД**
+![not_normilize_db](https://github.com/theayo/SUBD/blob/main/doc/nn_scheme.png)
+**Нормализованная Схема БД**
 ![normilize_db](https://github.com/theayo/SUBD/blob/main/doc/scheme.png)
 
