@@ -55,7 +55,7 @@
 
 
 **денорм**
-![normilize_db](https://github.com/theayo/SUBD/doc/scheme.png)
+![normilize_db](https://github.com/theayo/SUBD/blob/main/doc/scheme.png)
 **норм**
-![normilize_db](https://github.com/theayo/SUBD/doc/scheme.png)
+![normilize_db](https://github.com/theayo/SUBD/blob/main/doc/scheme.png)
 
