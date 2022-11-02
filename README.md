@@ -56,9 +56,9 @@
 
 **Не нормализованная Схема БД:**
 
-![not_normilize_db](https://github.com/theayo/SUBD/blob/main/doc/nn_scheme.png)
+![not_normilize_db](https://github.com/theayo/SUBD/blob/main/doc/nn_db.png)
 
 **Нормализованная Схема БД:**
 
-![normilize_db](https://github.com/theayo/SUBD/blob/main/doc/scheme.png)
+![normilize_db](https://github.com/theayo/SUBD/blob/main/doc/db.png)
 
