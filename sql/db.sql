@@ -1,149 +1,148 @@
-CREATE TABLE "dish" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(50) NOT NULL,
-  "type_id" INTEGER NOT NULL,
-  "category_id" INTEGER NOT NULL,
-  "taste_id" INTEGER NOT NULL,
-  "avg_mark" INTEGER NOT NULL,
-  "recipe_id" INTEGER NOT NULL
-);
+Table "dish" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(50) [not null]
+  "type_id" INTEGER [not null]
+  "category_id" INTEGER [not null]
+  "taste_id" INTEGER [not null]
+  "avg_mark" INTEGER [not null]
+  "recipe_id" INTEGER [not null]
+}
 
-CREATE TABLE "Category" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(255) NOT NULL
-);
+Table "Category" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(255) [not null]
+}
 
-CREATE TABLE "Taste" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(255) NOT NULL
-);
+Table "Taste" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(255) [not null]
+}
 
-CREATE TABLE "Type" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(255) NOT NULL
-);
+Table "Type" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(255) [not null]
+}
 
-CREATE TABLE "Author" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(50),
-  "avg_mark" INTEGER NOT NULL,
-  "last_post" timestamp(0) NOT NULL,
-  "user_id" INTEGER NOT NULL
-);
+Table "Author" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(50)
+  "avg_mark" INTEGER [not null]
+  "last_post" timestamp(0) [not null]
+  "user_id" INTEGER [not null]
+}
 
-CREATE TABLE "User" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(10) NOT NULL,
-  "login" VARCHAR(10) NOT NULL,
-  "passoword" VARCHAR(16) NOT NULL,
-  "email" VARCHAR(50) NOT NULL,
-  "date_reg" timestamp(0) NOT NULL,
-  "status_id" INTEGER NOT NULL
-);
+Table "User" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(10) [not null]
+  "login" VARCHAR(10) [not null]
+  "passoword" VARCHAR(16) [not null]
+  "email" VARCHAR(50) [not null]
+  "date_reg" timestamp(0) [not null]
+  "status_id" INTEGER [not null]
+}
 
-CREATE TABLE "Status" (
-  "id" INTEGER NOT NULL,
-  "title" VARCHAR(255) NOT NULL
-);
+Table "Status" {
+  "id" INTEGER [not null]
+  "title" VARCHAR(255) [not null]
+}
 
-CREATE TABLE "Review" (
-  "id" INTEGER NOT NULL,
-  "title" VARCHAR(50) NOT NULL,
-  "text_rev" VARCHAR(600) NOT NULL,
-  "mark_value" INTEGER NOT NULL,
-  "author_review" INTEGER NOT NULL
-);
+Table "Review" {
+  "id" INTEGER [not null]
+  "title" VARCHAR(50) [not null]
+  "text_rev" VARCHAR(600) [not null]
+  "mark_value" INTEGER [not null]
+  "author_review" INTEGER [not null]
+}
 
-CREATE TABLE "Moderator" (
-  "id" INTEGER NOT NULL,
-  "user_id" INTEGER NOT NULL,
-  "department_id" INTEGER NOT NULL
-);
+Table "Moderator" {
+  "id" INTEGER [not null]
+  "department_id" INTEGER [not null]
+  "user_id" INTEGER [not null]
+}
 
-CREATE TABLE "Department" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(65) NOT NULL,
-  "code" char(2) NOT NULL
-);
+Table "Department" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(65) [not null]
+  "code" char(2) [not null]
+}
 
-CREATE TABLE "Mark" (
-  "id" INTEGER NOT NULL,
-  "value" INTEGER NOT NULL,
-  "rate_date" timestamp(0) NOT NULL,
-  "user" INTEGER NOT NULL,
-  "recipe_id" INTEGER NOT NULL
-);
+Table "Mark" {
+  "id" INTEGER [not null]
+  "value" INTEGER [not null]
+  "rate_date" timestamp(0) [not null]
+  "user" INTEGER [not null]
+}
 
-CREATE TABLE "Difficulty" (
-  "id" INTEGER NOT NULL,
-  "degree" INTEGER NOT NULL,
-  "time_to_cook" datetime(0) NOT NULL,
-  "recipe_id" INTEGER NOT NULL
-);
+Table "Difficulty" {
+  "id" INTEGER [not null]
+  "degree" INTEGER [not null]
+  "time_to_cook" datetime(0) [not null]
+  "recipe_id" INTEGER [not null]
+}
 
-CREATE TABLE "Recipe" (
-  "id" INTEGER NOT NULL,
-  "author_id" INTEGER NOT NULL,
-  "Ingredients" INTEGER NOT NULL,
-  "review" INTEGER NOT NULL,
-  "text_recipe" VARCHAR(4000) NOT NULL
-);
+Table "Recipe" {
+  "id" INTEGER [not null]
+  "author_id" INTEGER [not null]
+  "Ingredients" INTEGER [not null]
+  "review" INTEGER [not null]
+  "text_recipe" VARCHAR(4000) [not null]
+}
 
-CREATE TABLE "Post" (
-  "id" INTEGER NOT NULL,
-  "post_title" VARCHAR(255) NOT NULL,
-  "post_text" VARCHAR(4000) NOT NULL,
-  "author_id" INTEGER NOT NULL
-);
+Table "Post" {
+  "id" INTEGER [not null]
+  "post_title" VARCHAR(255) [not null]
+  "post_text" VARCHAR(4000) [not null]
+  "author_id" INTEGER [not null]
+}
 
-CREATE TABLE "Products" (
-  "id" INTEGER NOT NULL,
-  "name" VARCHAR(64) NOT NULL,
-  "price" INTEGER NOT NULL
-);
+Table "Products" {
+  "id" INTEGER [not null]
+  "name" VARCHAR(64) [not null]
+  "price" INTEGER [not null]
+}
 
-CREATE TABLE "RecipeMark" (
-  "mark_id" INTEGER NOT NULL,
-  "recipe_id" INTEGER NOT NULL
-);
+Table "RecipeMark" {
+  "mark_id" INTEGER [not null]
+  "recipe_id" INTEGER [not null]
+}
 
-CREATE TABLE "RecipeProducts" (
-  "recipe_id" INTEGER NOT NULL,
-  "product_id" INTEGER NOT NULL
-);
+Table "RecipeProducts" {
+  "recipe_id" INTEGER [not null]
+  "product_id" INTEGER [not null]
+}
 
-ALTER TABLE "dish" ADD CONSTRAINT "dish_category_id_foreign" FOREIGN KEY ("category_id") REFERENCES "Category" ("id");
+Ref "dish_category_id_foreign":"Category"."id" < "dish"."category_id"
 
-ALTER TABLE "dish" ADD CONSTRAINT "dish_taste_id_foreign" FOREIGN KEY ("taste_id") REFERENCES "Taste" ("id");
+Ref "dish_taste_id_foreign":"Taste"."id" < "dish"."taste_id"
 
-ALTER TABLE "dish" ADD CONSTRAINT "dish_recipe_id_foreign" FOREIGN KEY ("recipe_id") REFERENCES "Recipe" ("id");
+Ref "dish_recipe_id_foreign":"Recipe"."id" < "dish"."recipe_id"
 
-ALTER TABLE "Author" ADD CONSTRAINT "author_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "User" ("id");
+Ref "author_user_id_foreign":"User"."id" < "Author"."user_id"
 
-ALTER TABLE "Mark" ADD CONSTRAINT "mark_user_foreign" FOREIGN KEY ("user") REFERENCES "User" ("id");
+Ref "mark_user_foreign":"User"."id" < "Mark"."user"
 
-ALTER TABLE "Recipe" ADD CONSTRAINT "recipe_review_foreign" FOREIGN KEY ("review") REFERENCES "Review" ("id");
+Ref "recipe_review_foreign":"Review"."id" < "Recipe"."review"
 
-ALTER TABLE "Review" ADD CONSTRAINT "review_author_review_foreign" FOREIGN KEY ("author_review") REFERENCES "User" ("id");
+Ref "review_author_review_foreign":"User"."id" < "Review"."author_review"
 
-ALTER TABLE "Moderator" ADD CONSTRAINT "moderator_user_id_foreign" FOREIGN KEY ("user_id") REFERENCES "User" ("id");
+Ref "moderator_user_id_foreign":"User"."id" < "Moderator"."user_id"
 
-ALTER TABLE "Difficulty" ADD CONSTRAINT "difficulty_recipe_id_foreign" FOREIGN KEY ("recipe_id") REFERENCES "Recipe" ("id");
+Ref "difficulty_recipe_id_foreign":"Recipe"."id" < "Difficulty"."recipe_id"
 
-ALTER TABLE "Recipe" ADD CONSTRAINT "recipe_author_id_foreign" FOREIGN KEY ("author_id") REFERENCES "Author" ("id");
+Ref "recipe_author_id_foreign":"Author"."id" < "Recipe"."author_id"
 
-ALTER TABLE "Post" ADD CONSTRAINT "post_author_id_foreign" FOREIGN KEY ("author_id") REFERENCES "Author" ("id");
+Ref "post_author_id_foreign":"Author"."id" < "Post"."author_id"
 
-ALTER TABLE "RecipeProducts" ADD CONSTRAINT "recipeproducts_product_id_foreign" FOREIGN KEY ("product_id") REFERENCES "Products" ("id");
+Ref "recipeproducts_product_id_foreign":"Products"."id" < "RecipeProducts"."product_id"
 
-ALTER TABLE "RecipeProducts" ADD CONSTRAINT "recipeproducts_recipe_id_foreign" FOREIGN KEY ("recipe_id") REFERENCES "Recipe" ("id");
+Ref "recipeproducts_recipe_id_foreign":"Recipe"."id" < "RecipeProducts"."recipe_id"
 
-ALTER TABLE "RecipeMark" ADD CONSTRAINT "recipemark_mark_id_foreign" FOREIGN KEY ("mark_id") REFERENCES "Mark" ("id");
+Ref "recipemark_mark_id_foreign":"Mark"."id" < "RecipeMark"."mark_id"
 
-ALTER TABLE "RecipeMark" ADD CONSTRAINT "recipemark_recipe_id_foreign" FOREIGN KEY ("recipe_id") REFERENCES "Recipe" ("id");
+Ref "recipemark_recipe_id_foreign":"Recipe"."id" < "RecipeMark"."recipe_id"
 
-ALTER TABLE "dish" ADD CONSTRAINT "=dish_type" FOREIGN KEY ("type_id") REFERENCES "Type" ("id");
+Ref "dish_type":"Type"."id" < "dish"."type_id"
 
-ALTER TABLE "Department" ADD CONSTRAINT "moderator_department_id_foreign" FOREIGN KEY ("id") REFERENCES "Moderator" ("department_id");
+Ref "moderator_department_id_foreign":"Moderator"."department_id" < "Department"."id"
 
-ALTER TABLE "Status" ADD CONSTRAINT "user_status_id_foreign" FOREIGN KEY ("id") REFERENCES "User" ("status_id");
+Ref "user_status_id_foreign":"User"."status_id" < "Status"."id"
